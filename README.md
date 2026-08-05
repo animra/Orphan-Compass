@@ -1,18 +1,20 @@
 # 🧭 Orphan Compass
 
-**Phenotype-driven rare disease candidate matching - free, local, and grounded in a real clinical ontology.**
+**Phenotype-driven rare disease candidate matching — free, local, and grounded in a real clinical ontology.**
 
 Describe symptoms in plain English → get ranked candidate rare diseases, matched against the same phenotype vocabulary used by clinical geneticists, with a local LLM explaining the evidence. No API keys. No cost. No black-box guessing.
 
 > ⚠️ **This is a research/educational tool, not a diagnostic device.** It does not replace a physician or clinical geneticist. See [Limitations](#limitations--disclaimer).
 
+![Orphan Compass example output](assets/example_output.svg)
+
 ---
 
 ## Why this exists
 
-Patients with rare diseases wait years for a correct diagnosis on average, largely because their symptoms don't map cleanly onto the common conditions most clinicians see day to day. Most "AI symptom checker" projects just ask an LLM to free-associate a diagnosis from text - which hallucinates confidently and isn't grounded in anything verifiable.
+Patients with rare diseases wait years for a correct diagnosis on average, largely because their symptoms don't map cleanly onto the common conditions most clinicians see day to day. Most "AI symptom checker" projects just ask an LLM to free-associate a diagnosis from text — which hallucinates confidently and isn't grounded in anything verifiable.
 
-Orphan Compass instead uses a technique from real clinical bioinformatics - **phenotype-based differential ranking** - and only brings in an LLM at the very end, to *explain* a shortlist that was already computed from real data. The LLM narrates evidence; it doesn't invent it.
+Orphan Compass instead uses a technique from real clinical bioinformatics — **phenotype-based differential ranking** — and only brings in an LLM at the very end, to *explain* a shortlist that was already computed from real data. The LLM narrates evidence; it doesn't invent it.
 
 ## How it works
 
@@ -35,7 +37,7 @@ Free-text symptoms
 
 ## Data & credits
 
-This project is built entirely on public data and open-weight models. No part of the underlying ontology, annotation data, or model weights was created by this project - full credit below.
+This project is built entirely on public data and open-weight models. No part of the underlying ontology, annotation data, or model weights was created by this project — full credit below.
 
 **Human Phenotype Ontology (HPO)**
 The phenotype vocabulary and disease-phenotype annotations come from the [Human Phenotype Ontology](https://hpo.jax.org/), developed by the Monarch Initiative in collaboration with the Open Biomedical Ontologies Foundry, and hosted by the Jackson Laboratory. HPO is free to use with attribution; this project does not modify the ontology itself, only reads it. If you build on this project for anything beyond casual use, please cite the HPO project directly per their [citation guidance](https://obophenotype.github.io/human-phenotype-ontology/community/cite/) — the standard reference is:
@@ -48,30 +50,36 @@ The phenotype vocabulary and disease-phenotype annotations come from the [Human 
 
 ## Quick start
 
-Open `rare_disease_matcher.ipynb` in [Google Colab](https://colab.research.google.com/) or Jupyter, and run all cells top to bottom. First run downloads the HPO dataset (~150MB) and model weights — after that, everything runs locally with no network calls.
+**Option A — Google Colab (easiest, no setup):** open `rare_disease_matcher.ipynb` in [Colab](https://colab.research.google.com/), Runtime → Run all.
+
+**Option B — local Jupyter:**
+```bash
+pip install -r requirements.txt
+jupyter notebook rare_disease_matcher.ipynb
+```
+
+Either way, the first run downloads the HPO dataset (~45MB total) and model weights — after that, everything runs locally with no network calls.
 
 ```python
 diagnose("recurrent bone fractures, blue-tinted sclera, hearing loss, short stature")
 ```
 
-```
-Matched phenotypes:
-  - 'recurrent bone fractures' -> Bone fragility (HP:0003818, similarity 0.71)
-  - 'blue-tinted sclera' -> Blue sclerae (HP:0000592, similarity 0.83)
-  - 'hearing loss' -> Hearing impairment (HP:0000365, similarity 0.79)
-  - 'short stature' -> Short stature (HP:0004322, similarity 0.91)
+![Example output: matched phenotypes and ranked candidate diseases, with osteogenesis imperfecta ranked first](assets/example_output.svg)
 
-Top candidate diseases:
-  8.42  Osteogenesis imperfecta type I — matched: Bone fragility, Blue sclerae, Hearing impairment
-  ...
-```
+Osteogenesis imperfecta ranking #1 here is a good sign — those four symptoms (fragile bones, blue sclerae, hearing loss, short stature) are its textbook presentation, and the algorithm found it purely from phenotype overlap with no hardcoded rule pointing to it.
 
 ## Repo structure
 
 ```
 orphan-compass/
 ├── rare_disease_matcher.ipynb   # full pipeline, runnable end-to-end
+├── requirements.txt             # for local Jupyter use (Colab installs inline)
+├── assets/
+│   └── example_output.svg       # README screenshot
 ├── README.md
+├── LICENSE
+├── CONTRIBUTING.md
+├── .gitignore
 └── (hp.obo, phenotype.hpoa downloaded at runtime — not checked into repo)
 ```
 
