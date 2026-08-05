@@ -1,4 +1,3 @@
-# Orphan-Compass
 # 🧭 Orphan Compass
 
 **Phenotype-driven rare disease candidate matching — free, local, and grounded in a real clinical ontology.**
