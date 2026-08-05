@@ -1,6 +1,6 @@
 # 🧭 Orphan Compass
 
-**Phenotype-driven rare disease candidate matching — free, local, and grounded in a real clinical ontology.**
+**Phenotype-driven rare disease candidate matching - free, local, and grounded in a real clinical ontology.**
 
 Describe symptoms in plain English → get ranked candidate rare diseases, matched against the same phenotype vocabulary used by clinical geneticists, with a local LLM explaining the evidence. No API keys. No cost. No black-box guessing.
 
