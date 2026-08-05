@@ -10,9 +10,9 @@ Describe symptoms in plain English → get ranked candidate rare diseases, match
 
 ## Why this exists
 
-Patients with rare diseases wait years for a correct diagnosis on average, largely because their symptoms don't map cleanly onto the common conditions most clinicians see day to day. Most "AI symptom checker" projects just ask an LLM to free-associate a diagnosis from text — which hallucinates confidently and isn't grounded in anything verifiable.
+Patients with rare diseases wait years for a correct diagnosis on average, largely because their symptoms don't map cleanly onto the common conditions most clinicians see day to day. Most "AI symptom checker" projects just ask an LLM to free-associate a diagnosis from text - which hallucinates confidently and isn't grounded in anything verifiable.
 
-Orphan Compass instead uses a technique from real clinical bioinformatics — **phenotype-based differential ranking** — and only brings in an LLM at the very end, to *explain* a shortlist that was already computed from real data. The LLM narrates evidence; it doesn't invent it.
+Orphan Compass instead uses a technique from real clinical bioinformatics - **phenotype-based differential ranking** - and only brings in an LLM at the very end, to *explain* a shortlist that was already computed from real data. The LLM narrates evidence; it doesn't invent it.
 
 ## How it works
 
