@@ -35,7 +35,7 @@ Free-text symptoms
 
 ## Data & credits
 
-This project is built entirely on public data and open-weight models. No part of the underlying ontology, annotation data, or model weights was created by this project — full credit below.
+This project is built entirely on public data and open-weight models. No part of the underlying ontology, annotation data, or model weights was created by this project - full credit below.
 
 **Human Phenotype Ontology (HPO)**
 The phenotype vocabulary and disease-phenotype annotations come from the [Human Phenotype Ontology](https://hpo.jax.org/), developed by the Monarch Initiative in collaboration with the Open Biomedical Ontologies Foundry, and hosted by the Jackson Laboratory. HPO is free to use with attribution; this project does not modify the ontology itself, only reads it. If you build on this project for anything beyond casual use, please cite the HPO project directly per their [citation guidance](https://obophenotype.github.io/human-phenotype-ontology/community/cite/) — the standard reference is:
